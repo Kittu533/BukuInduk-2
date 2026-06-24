@@ -271,145 +271,155 @@ public function detail($id)
 }
 
     public function detailSiswa($id)
-{
-    $menu = "nilai_akademik";
+    {
+        $menu = "nilai_akademik";
 
-    $siswa = Siswa::findOrFail($id);
+        $siswa = Siswa::findOrFail($id);
 
-    // Semua riwayat untuk dropdown
-    $riwayat = AcademicRecord::riwayatSiswa($id);
+        /*
+        |--------------------------------------------------------------------------
+        | SEMUA RIWAYAT UNTUK DROPDOWN
+        |--------------------------------------------------------------------------
+        */
 
-    /*
-    |--------------------------------------------------------------------------
-    | DEFAULT = KELAS AKTIF SISWA
-    |--------------------------------------------------------------------------
-    */
+        $riwayat = AcademicRecord::riwayatSiswa($id);
 
-    if (request()->filled('kelas_aktif')) {
+        /*
+        |--------------------------------------------------------------------------
+        | DEFAULT = KELAS AKTIF SISWA
+        |--------------------------------------------------------------------------
+        */
 
-        $kelasData = AcademicRecord::riwayatTerpilih(
-            $siswa,
-            request('kelas_aktif')
-        );
+        if (request()->filled('kelas_aktif')) {
 
-    } else {
+            $kelasData = AcademicRecord::riwayatTerpilih(
+                $siswa,
+                request('kelas_aktif')
+            );
 
-        $kelasData = SiswaKelas::with([
-            'kelasAktif.kelas',
-            'kelasAktif.semester',
-            'kelasAktif.tahunAjaran',
-        ])
-        ->where('id_siswa', $id)
-        ->first();
-    }
+        } else {
 
-    /*
-    |--------------------------------------------------------------------------
-    | DATA KELAS
-    |--------------------------------------------------------------------------
-    */
+            $kelasData = SiswaKelas::with([
+                'kelasAktif.kelas',
+                'kelasAktif.semester',
+                'kelasAktif.tahunAjaran',
+            ])
+            ->where('id_siswa', $id)
+            ->first();
+        }
 
-    $kelas = null;
+        /*
+        |--------------------------------------------------------------------------
+        | DATA KELAS
+        |--------------------------------------------------------------------------
+        */
 
-    if ($kelasData && $kelasData->kelasAktif) {
+        $kelas = null;
 
-        $kelas = (object) [
-            'nama_kelas'     =>
-                $kelasData->kelasAktif->kelas->nama_kelas ?? '-',
+        if ($kelasData && $kelasData->kelasAktif) {
 
-            'id_kelas_aktif' =>
-                $kelasData->kelasAktif->id_kelas_aktif,
+            $kelas = (object) [
 
-            'nama_semester'  =>
-                $kelasData->kelasAktif->semester->nama_semester ?? '-',
+                'nama_kelas' =>
+                    $kelasData->kelasAktif->kelas->nama_kelas ?? '-',
 
-            'tahun'          =>
-                $kelasData->kelasAktif->tahunAjaran->tahun ?? '-',
-        ];
-    }
+                'id_kelas_aktif' =>
+                    $kelasData->kelasAktif->id_kelas_aktif,
 
-    /*
-    |--------------------------------------------------------------------------
-    | NILAI SESUAI KELAS TERPILIH
-    |--------------------------------------------------------------------------
-    */
+                'nama_semester' =>
+                    $kelasData->kelasAktif->semester->nama_semester ?? '-',
 
-    $nilai_all = collect();
+                'tahun' =>
+                    $kelasData->kelasAktif->tahunAjaran->tahun ?? '-',
 
-    if ($kelas) {
+            ];
+        }
 
-        $nilai_all = AcademicRecord::nilaiAkademik(
-            $id,
-            $kelas->id_kelas_aktif,
-            $siswa->getMapelExcluded()
-        );
-    }
+        /*
+        |--------------------------------------------------------------------------
+        | NILAI AKADEMIK
+        |--------------------------------------------------------------------------
+        */
 
-    /*
-    |--------------------------------------------------------------------------
-    | FALLBACK JIKA NILAI KOSONG
-    |--------------------------------------------------------------------------
-    */
+        $nilai_all = collect();
 
-    if ($nilai_all->isEmpty() && $riwayat->count()) {
-
-        foreach ($riwayat as $item) {
+        if ($kelas) {
 
             $nilai_all = AcademicRecord::nilaiAkademik(
                 $id,
-                $item->id_kelas_aktif,
+                $kelas->id_kelas_aktif,
                 $siswa->getMapelExcluded()
             );
+        }
 
-            if ($nilai_all->isNotEmpty()) {
+        /*
+        |--------------------------------------------------------------------------
+        | FALLBACK JIKA NILAI KOSONG
+        |--------------------------------------------------------------------------
+        */
 
-                $kelas = (object) [
+        if ($nilai_all->isEmpty() && $riwayat->count()) {
 
-                    'nama_kelas' =>
-                        $item->kelasAktif->kelas->nama_kelas ?? '-',
+            foreach ($riwayat as $item) {
 
-                    'id_kelas_aktif' =>
-                        $item->kelasAktif->id_kelas_aktif,
+                $nilai_all = AcademicRecord::nilaiAkademik(
+                    $id,
+                    $item->id_kelas_aktif,
+                    $siswa->getMapelExcluded()
+                );
 
-                    'nama_semester' =>
-                        $item->kelasAktif->semester->nama_semester ?? '-',
+                if ($nilai_all->isNotEmpty()) {
 
-                    'tahun' =>
-                        $item->kelasAktif->tahunAjaran->tahun ?? '-',
-                ];
+                    $kelas = (object) [
 
-                break;
+                        'nama_kelas' =>
+                            $item->kelasAktif->kelas->nama_kelas ?? '-',
+
+                        'id_kelas_aktif' =>
+                            $item->kelasAktif->id_kelas_aktif,
+
+                        'nama_semester' =>
+                            $item->kelasAktif->semester->nama_semester ?? '-',
+
+                        'tahun' =>
+                            $item->kelasAktif->tahunAjaran->tahun ?? '-',
+
+                    ];
+
+                    $kelasData = $item;
+
+                    break;
+                }
             }
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | KELOMPOK NILAI
+        |--------------------------------------------------------------------------
+        */
+
+        [
+            'wajib'   => $nilai_wajib,
+            'pilihan' => $nilai_pilihan
+        ] = AcademicRecord::kelompokNilai($nilai_all);
+
+        [$canEdit, $editLockReason] = $this->resolveEditState($kelasData);
+
+        return view(
+            'admin.nilai_akademik.detail_siswa_na',
+            compact(
+                'menu',
+                'siswa',
+                'kelas',
+                'nilai_wajib',
+                'nilai_pilihan',
+                'riwayat',
+                'canEdit',
+                'editLockReason'
+            )
+        );
     }
-
-    [
-        'wajib'   => $nilai_wajib,
-        'pilihan' => $nilai_pilihan
-    ] = AcademicRecord::kelompokNilai($nilai_all);
-
-    $canEdit = $kelasData
-        && $kelasData->kelasAktif
-        && $kelasData->kelasAktif->semester
-        && $kelasData->kelasAktif->semester->status === 'aktif'
-        && $kelasData->kelasAktif->semester->masihBisaEditNilai();
-
-    [, $editLockReason] = $this->resolveEditState($kelasData);
-
-    return view(
-        'admin.nilai_akademik.detail_siswa_na',
-        compact(
-            'menu',
-            'siswa',
-            'kelas',
-            'nilai_wajib',
-            'nilai_pilihan',
-            'riwayat',
-            'canEdit',
-            'editLockReason'
-        )
-    );
-}
 
     public function edit($id)
     {
@@ -422,15 +432,17 @@ public function detail($id)
         abort_if(!$kelasData, 404, 'Riwayat kelas siswa tidak ditemukan.');
 
         [$canEdit, $editLockReason] = $this->resolveEditState($kelasData);
-        $semester = $kelasData->kelasAktif->semester;
+        $kelasAktif = $kelasData->kelasAktif;
+        $semester = $kelasAktif->semester;
+        $tahunAjaran = $kelasAktif->tahunAjaran;
 
         $kelas = (object) [
-            'nama_kelas' => $kelasData->kelasAktif->kelas->nama_kelas,
-            'id_kelas_aktif' => $kelasData->kelasAktif->id_kelas_aktif,
-            'nama_semester' => $semester->nama_semester,
-            'tahun' => $semester->tahunAjaran->tahun,
-            'status_semester' => $semester->status,
-            'batas_edit_nilai' => $semester->batas_edit_nilai,
+            'nama_kelas' => $kelasAktif->kelas->nama_kelas ?? '-',
+            'id_kelas_aktif' => $kelasAktif->id_kelas_aktif,
+            'nama_semester' => $semester->nama_semester ?? '-',
+            'tahun' => $tahunAjaran->tahun ?? '-',
+            'status_semester' => $semester->status ?? null,
+            'batas_edit_nilai' => $semester->batas_edit_nilai ?? null,
         ];
 
         $nilai = AcademicRecord::nilaiAkademik($id, $kelas->id_kelas_aktif, $siswa->getMapelExcluded());
@@ -500,14 +512,32 @@ public function detail($id)
 
     private function resolveEditState($kelasData): array
     {
-        if (! $kelasData || ! $kelasData->kelasAktif || ! $kelasData->kelasAktif->semester) {
+        if (
+            ! $kelasData ||
+            ! $kelasData->kelasAktif ||
+            ! $kelasData->kelasAktif->semester
+        ) {
             return [false, 'Riwayat kelas siswa tidak ditemukan.'];
         }
 
+        $kelasAktif = $kelasData->kelasAktif;
         $semester = $kelasData->kelasAktif->semester;
+        $namaKelas = strtoupper($kelasAktif->kelas->nama_kelas ?? '');
+        $namaSemester = strtoupper($semester->nama_semester ?? '');
+
+        if (
+            str_starts_with($namaKelas, 'XII')
+            && $namaSemester !== 'GENAP'
+        ) {
+            return [false, 'Kelas XII hanya bisa diedit pada semester Genap.'];
+        }
+
+        if ($namaSemester === 'GENAP') {
+            return [true, null];
+        }
 
         if ($semester->status !== 'aktif') {
-            return [false, 'Nilai semester lama hanya bisa dilihat. Edit hanya dibuka untuk semester aktif.'];
+            return [false, 'Nilai hanya bisa diedit untuk semester Genap.'];
         }
 
         if (! $semester->masihBisaEditNilai()) {

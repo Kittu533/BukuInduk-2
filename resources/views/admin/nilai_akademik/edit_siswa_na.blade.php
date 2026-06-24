@@ -119,7 +119,7 @@
                     Status Edit Nilai
                 </h5>
                 <div class="nilai-help-text">
-                    Edit hanya dibuka untuk semester aktif dan selama belum melewati batas edit.
+                    Nilai bisa diedit untuk semester Genap. Semester selain itu akan tampil read-only.
                 </div>
             </div>
 
@@ -169,38 +169,6 @@
 
                 <td>
                     {{ $kelas->nama_kelas }} — {{ $kelas->nama_semester }} / {{ $kelas->tahun }}
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>
-                    <b>Status Semester</b>
-                </td>
-
-                <td>
-                    :
-                </td>
-
-                <td>
-                    {{ ucfirst($kelas->status_semester ?? '-') }}
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>
-                    <b>Batas Edit</b>
-                </td>
-
-                <td>
-                    :
-                </td>
-
-                <td>
-                    {{ $deadline }}
                 </td>
 
             </tr>
