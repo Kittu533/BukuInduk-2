@@ -94,11 +94,6 @@
                                 Detail
                             </a>
 
-                            <a href="{{ url('admin/export/hasil-belajar/'.$s->id_siswa) }}"
-                               class="btn btn-success btn-sm">
-                                <i class="bi bi-file-earmark-pdf"></i> Rapor
-                            </a>
-
                         </td>
 
                     </tr>
