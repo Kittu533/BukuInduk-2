@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
  *
  * Fitur:
  * - List kelas → list siswa → detail nilai per siswa
- * - Edit nilai dibatasi semester aktif dan batas_edit_nilai
+ * - Edit nilai tersedia untuk semua semester yang memiliki data kelas valid
  * - Kalkulasi nilai akhir otomatis via NilaiMapel::hitungNilaiAkhir()
  * - Filter mata pelajaran berdasarkan agama siswa
  *
@@ -518,30 +518,6 @@ public function detail($id)
             ! $kelasData->kelasAktif->semester
         ) {
             return [false, 'Riwayat kelas siswa tidak ditemukan.'];
-        }
-
-        $kelasAktif = $kelasData->kelasAktif;
-        $semester = $kelasData->kelasAktif->semester;
-        $namaKelas = strtoupper($kelasAktif->kelas->nama_kelas ?? '');
-        $namaSemester = strtoupper($semester->nama_semester ?? '');
-
-        if (
-            str_starts_with($namaKelas, 'XII')
-            && $namaSemester !== 'GENAP'
-        ) {
-            return [false, 'Kelas XII hanya bisa diedit pada semester Genap.'];
-        }
-
-        if ($namaSemester === 'GENAP') {
-            return [true, null];
-        }
-
-        if ($semester->status !== 'aktif') {
-            return [false, 'Nilai hanya bisa diedit untuk semester Genap.'];
-        }
-
-        if (! $semester->masihBisaEditNilai()) {
-            return [false, 'Batas edit nilai semester aktif sudah lewat. Nilai dikunci dari UI normal.'];
         }
 
         return [true, null];

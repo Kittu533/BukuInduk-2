@@ -119,7 +119,7 @@
                     Status Edit Nilai
                 </h5>
                 <div class="nilai-help-text">
-                    Nilai bisa diedit untuk semester Genap. Semester selain itu akan tampil read-only.
+                    Nilai bisa diedit untuk semua semester yang memiliki data kelas valid.
                 </div>
             </div>
 
