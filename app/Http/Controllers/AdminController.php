@@ -41,16 +41,24 @@ class AdminController extends Controller
         | GENDER SISWA
         |------------------------------------------------------------------
         */
-        $gender = Siswa::selectRaw("
-                CASE
-                    WHEN LOWER(jenis_kelamin) IN ('l', 'laki-laki', 'laki laki') THEN 'Laki-laki'
-                    WHEN LOWER(jenis_kelamin) IN ('p', 'perempuan') THEN 'Perempuan'
-                    ELSE jenis_kelamin
-                END as jenis_kelamin,
-                COUNT(*) as total
-            ")
+        $gender = Siswa::select('jenis_kelamin', DB::raw('COUNT(*) as total'))
             ->groupBy('jenis_kelamin')
-            ->pluck('total', 'jenis_kelamin');
+            ->get()
+            ->reduce(function ($carry, $item) {
+                $label = match (strtolower(trim((string) $item->jenis_kelamin))) {
+                    'l', 'laki-laki', 'laki laki' => 'Laki-laki',
+                    'p', 'perempuan' => 'Perempuan',
+                    default => null,
+                };
+
+                if ($label === null) {
+                    return $carry;
+                }
+
+                $carry[$label] = ($carry[$label] ?? 0) + (int) $item->total;
+
+                return $carry;
+            }, collect());
 
         /*
         |------------------------------------------------------------------
