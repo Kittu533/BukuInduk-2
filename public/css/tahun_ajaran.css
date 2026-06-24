@@ -1,0 +1,77 @@
+/* ===============================
+   BACKGROUND HALAMAN
+================================= */
+body{
+    background:#f4f6fb;
+}
+
+
+/* ===============================
+   JUDUL HALAMAN
+================================= */
+.page-title{
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    color:#2c3e50;
+    margin-bottom:20px;
+}
+
+
+/* ===============================
+   CARD TABEL
+================================= */
+.table-card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+
+/* ===============================
+   HEADER TABEL
+================================= */
+.table thead{
+    background:linear-gradient(90deg,#4f5bd5,#6c7ae0);
+    color:white;
+}
+
+
+/* ===============================
+   HOVER BARIS
+================================= */
+.table tbody tr:hover{
+    background:#eef1ff;
+    transition:0.2s;
+}
+
+
+/* ===============================
+   BUTTON
+================================= */
+.btn{
+    border-radius:8px;
+}
+
+.btn-primary{
+    background:#4f5bd5;
+    border:none;
+}
+
+.btn-warning{
+    border:none;
+    color:white;
+}
+
+.btn-danger{
+    border:none;
+}
+
+
+/* ===============================
+   BADGE STATUS
+================================= */
+.badge{
+    padding:8px 12px;
+    font-size:13px;
+    border-radius:8px;
+}

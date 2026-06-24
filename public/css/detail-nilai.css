@@ -1,0 +1,32 @@
+.judul{
+    font-weight: 600;
+}
+
+.center{
+    text-align: center;
+}
+
+.right{
+    text-align: right;
+}
+
+.mapel{
+    text-align: left;
+}
+
+.table th{
+    vertical-align: middle;
+}
+
+.table td{
+    vertical-align: middle;
+}
+
+.nilai-title{
+    font-weight: 700;
+    color: #1f3b5b;
+}
+
+.btn-edit{
+    min-width: 120px;
+}

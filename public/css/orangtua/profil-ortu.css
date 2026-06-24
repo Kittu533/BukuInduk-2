@@ -1,0 +1,99 @@
+/* ==========================
+   WRAPPER
+========================== */
+
+.profil-wrapper{
+    background:#ffffff;
+    border-radius:20px;
+    padding:35px;
+    margin:15px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+
+/* ==========================
+   SECTION
+========================== */
+
+.section-block{
+    margin-bottom:35px;
+}
+
+.section-title{
+    color:#3f51b5;
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+/* ==========================
+   TABLE
+========================== */
+
+.table{
+    margin-bottom:0;
+}
+
+.table th{
+    width:250px;
+    background:#f8fafc;
+    color:#374151;
+    font-weight:600;
+    vertical-align:middle;
+}
+
+.table td{
+    color:#111827;
+    vertical-align:middle;
+}
+
+.table-bordered{
+    border-color:#dbe2ea;
+}
+
+.table th,
+.table td{
+    padding:12px 15px;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.btn-primary{
+    background:#3f51b5;
+    border:none;
+    border-radius:10px;
+    padding:10px 20px;
+    font-weight:600;
+}
+
+.btn-primary:hover{
+    background:#32408f;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+    .profil-wrapper{
+        padding:20px;
+        margin:10px;
+    }
+
+    .profile-header h2{
+        font-size:26px;
+    }
+
+    .student-meta{
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .table th{
+        width:40%;
+    }
+
+}

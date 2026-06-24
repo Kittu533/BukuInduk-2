@@ -1,0 +1,132 @@
+/* ===============================
+   BACKGROUND HALAMAN
+================================= */
+body{
+    background:#f4f6fb;
+     font-size:16px;
+}
+
+
+/* ===============================
+   JUDUL HALAMAN
+================================= */
+.page-title{
+    font-weight:600;
+    font-size:30px;
+    margin-bottom:20px;
+    color:#2c3e50;
+}
+
+
+/* ===============================
+   CARD PEMBUNGKUS TABEL
+================================= */
+.table-card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+/* efek hover card */
+.table-card:hover{
+    transform:translateY(-2px);
+}
+
+
+/* ===============================
+   TABEL
+================================= */
+.table{
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:0;
+}
+
+/* kepala tabel */
+.table thead{
+    background:linear-gradient(90deg,#4f5bd5,#6c7ae0);
+    color:white;
+}
+
+/* isi tabel */
+.table td,
+.table th{
+    vertical-align:middle;
+    padding:14px;
+    font-size:19px;
+}
+
+/* hover baris tabel */
+.table tbody tr:hover{
+    background:#f8f9ff;
+    transition:0.2s;
+}
+
+
+/* ===============================
+   BUTTON UMUM
+================================= */
+.btn{
+    border-radius:8px;
+    padding:8px 14px;
+    font-weight:500;
+    font-size:16px;
+}
+
+
+/* tombol tambah */
+.btn-primary{
+    background:#4f5bd5;
+    border:none;
+}
+
+.btn-primary:hover{
+    background:#3d49c4;
+}
+
+/* tombol simpan */ 
+.btn-success{
+    background:#16a34a;
+    border:none;
+    color:white;
+}
+
+.btn-success:hover{
+    background:#15803d;
+    color:white;
+}
+
+/* tombol edit */
+.btn-warning{
+    color:white;
+}
+
+.btn-warning:hover{
+    background:#e0a800;
+}
+
+
+/* tombol hapus */
+.btn-danger{
+    border:none;
+}
+
+.btn-danger:hover{
+    background:#c82333;
+}
+
+
+/* ===============================
+   INPUT FORM (jika dipakai nanti)
+================================= */
+.form-control{
+    border-radius:10px;
+    border:1px solid #dbe2ef;
+     font-size:16px;
+}
+
+.form-control:focus{
+    box-shadow:none;
+    border-color:#4f5bd5;
+}

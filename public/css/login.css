@@ -1,0 +1,197 @@
+.login-page *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-page{
+    min-height: 100vh;
+    font-family: sans-serif;
+    background-image: url('../img/profile.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-bottom: 70px;
+}
+
+/* OVERLAY */
+
+.login-page .overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+}
+
+/* CONTAINER */
+
+.login-page .login-container{
+    position: relative;
+    z-index: 2;
+    margin-top: 100px;
+}
+
+/* LOGIN BOX */
+
+.login-page .login-box{
+    width: 340px;
+    padding: 15px 18px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+/* LOGO */
+
+.login-page .logo-sekolah{
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+/* SUBTITLE */
+
+.login-page .subtitle{
+    color: rgba(255,255,255,0.9);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* TITLE */
+
+.login-page .login-box h1{
+    font-size: 22px;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* INPUT */
+
+.login-page .input-group-custom{
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.95);
+    border-radius: 8px;
+    padding: 0 10px;
+    margin-bottom: 8px;
+    height: 36px;
+}
+
+.login-page .input-group-custom span{
+    font-size: 13px;
+    margin-right: 8px;
+    opacity: .7;
+}
+
+.login-page .input-group-custom input{
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    font-size: 13px;
+}
+
+/* RECAPTCHA */
+
+.login-page .g-recaptcha{
+    transform: scale(0.70);
+    -webkit-transform: scale(0.70);
+    transform-origin: center;
+    -webkit-transform-origin: center;
+}
+
+.login-page .mb-3{
+    margin-bottom: -5px !important;
+}
+
+/* LUPA PASSWORD */
+
+.login-page .forgot-password{
+    margin: 5px 0 10px;
+}
+
+.login-page .forgot-password a{
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.login-page .forgot-password a:hover{
+    text-decoration: underline;
+}
+
+/* BUTTON */
+
+.login-page .btn-login{
+    height: 38px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.login-page .btn-login:hover{
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+
+.login-page footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    z-index: 2;
+}
+
+.login-page .footer-content{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.login-page .footer-item h6{
+    color: white;
+    font-size: 14px;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.login-page .footer-item p{
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    margin: 0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+    .login-page .login-box{
+        width: 90%;
+    }
+
+    .login-page .footer-content{
+        gap: 15px;
+        text-align: center;
+    }
+
+    .login-page .g-recaptcha{
+        transform: scale(0.60);
+    }
+}

@@ -1,0 +1,87 @@
+/* SIDEBAR */
+.sidebar{
+    width:320px;
+    height:100vh;
+    background:linear-gradient(180deg, #f8f9ff, #eef2ff);
+    border-right:1px solid #e5e7eb;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:30px;
+    overflow-y:auto;
+    box-shadow:0 4px 12px rgba(0,0,0,0.04);
+
+    display:flex;              /* 🔥 WAJIB */
+    flex-direction:column; 
+}
+
+/* title section */
+.menu-title{
+    font-size:13px;
+    font-weight:700;
+    color:#9ca3af;
+    margin-top:18px;
+    margin-bottom:6px;
+    letter-spacing:1px;
+}
+
+/* MENU */
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 15px;
+    font-size:20px;
+    font-weight:500;
+    color:#111827;
+    text-decoration:none;
+    border-radius:10px;
+    margin-bottom:6px;
+    transition:0.25s;
+}
+
+/* HOVER */
+.sidebar a:hover{
+    background:#eef2ff;
+    color:#3949ab;
+    transform:translateX(3px);
+}
+
+/* ACTIVE */
+.sidebar a.active{
+    background:#3949ab;
+    color:white;
+    font-weight:600;
+    box-shadow:0 6px 15px rgba(57,73,171,0.25);
+}
+
+.sidebar a.active i{
+    color:white;
+}
+
+/* logout bawah */
+.logout{
+    margin-top:auto;
+}
+
+/* ================= LOGO SEKOLAH ================= */
+.logo-sekolah{
+    text-align:center;
+    margin-bottom:25px;
+    padding-bottom:15px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.logo-sekolah img{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    margin-bottom:8px;
+}
+
+.logo-sekolah h6{
+    font-size:14px;
+    font-weight:700;
+    color:#3949ab;
+    margin:0;
+}

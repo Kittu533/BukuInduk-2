@@ -1,0 +1,19 @@
+.page-title{
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.table-card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+.table thead{
+    background:linear-gradient(90deg,#4f5bd5,#6c7ae0);
+    color:white;
+}
+
+.btn{
+    border-radius:8px;
+}

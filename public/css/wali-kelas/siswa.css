@@ -1,0 +1,44 @@
+
+css
+/* background halaman */
+.body{
+    background:#f4f6fb;
+}
+
+/* judul halaman */
+.page-title{
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    color:#2c3e50;
+    margin-bottom:20px;
+}
+
+/* card */
+.form-card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* tabel detail */
+.detail-table th{
+    width:280px;
+    background:#f8f9fc;
+    font-weight:600;
+    color:#2c3e50;
+}
+
+.detail-table td{
+    background:#ffffff;
+}
+
+.detail-table th,
+.detail-table td{
+    padding:12px 16px;
+    vertical-align:middle;
+}
+
+/* tombol */
+.btn{
+    border-radius:6px;
+}

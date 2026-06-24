@@ -1,0 +1,33 @@
+body{
+    background:#e5e7eb;
+}
+
+.rapor-wrapper{
+    width:1000px;
+    margin:auto;
+    background:white;
+    padding:40px;
+    min-height:100vh;
+}
+
+.rapor-title{
+    text-align:center;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.table-rapor{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+}
+
+.table-rapor th,
+.table-rapor td{
+    border:1px solid black;
+    padding:4px 6px;
+}
+
+.table-rapor th{
+    background:#f3f4f6;
+}

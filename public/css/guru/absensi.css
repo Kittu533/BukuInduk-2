@@ -1,0 +1,162 @@
+/* ===================== */
+/* BACKGROUND */
+/* ===================== */
+body{
+    background:#f4f6fb;
+}
+
+/* ===================== */
+/* TITLE */
+/* ===================== */
+.page-title{
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    color:#2c3e50;
+    margin-bottom:20px;
+}
+
+/* ===================== */
+/* CARD */
+/* ===================== */
+.card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+.card-body{
+    padding:20px;
+}
+
+/* ===================== */
+/* TABLE */
+/* ===================== */
+.table thead{
+    background:linear-gradient(90deg,#20c997,#17a2b8);
+    color:white;
+}
+
+.table th,
+.table td{
+    padding:10px;
+    vertical-align:middle;
+}
+
+/* hover */
+.table tbody tr:hover{
+    background:#e8fbff;
+}
+
+/* striped */
+.table-striped tbody tr:nth-of-type(odd){
+    background-color:#f8feff;
+}
+
+.table-striped tbody tr:nth-of-type(even){
+    background-color:#e8fbff;
+}
+
+/* ===================== */
+/* BUTTON */
+/* ===================== */
+.btn-primary{
+    background:#17a2b8;
+    border:none;
+    border-radius:8px;
+}
+
+.btn-success{
+    background:#20c997;
+    border:none;
+    border-radius:8px;
+}
+
+.btn-secondary{
+    border-radius:8px;
+}
+
+/* ===================== */
+/* STATUS BADGE */
+/* ===================== */
+.badge-hadir{
+    background:#28a745;
+    color:white;
+    padding:5px 10px;
+    border-radius:8px;
+}
+
+.badge-izin{
+    background:#ffc107;
+    color:black;
+    padding:5px 10px;
+    border-radius:8px;
+}
+
+.badge-sakit{
+    background:#17a2b8;
+    color:white;
+    padding:5px 10px;
+    border-radius:8px;
+}
+
+.badge-alpha{
+    background:#dc3545;
+    color:white;
+    padding:5px 10px;
+    border-radius:8px;
+}
+
+/* ===================== */
+/* FORM */
+/* ===================== */
+.form-control{
+    border-radius:8px;
+    border:1px solid #dcdfe6;
+}
+
+.form-control:focus{
+    border-color:#17a2b8;
+    box-shadow:0 0 0 0.15rem rgba(23,162,184,0.2);
+}
+
+/* ===================== */
+/* BUTTON ACTION */
+/* ===================== */
+.form-action{
+    display:flex;
+    justify-content:flex-start;
+    gap:10px;
+    margin-top:15px;
+}
+
+/* ===================== */
+/* INFO BOX */
+/* ===================== */
+.info-box{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* ===================== */
+/* INFO TABLE */
+/* ===================== */
+.info-table th{
+    background:#f1f3f9;
+    font-weight:600;
+    font-size:14px;
+    width:180px;
+}
+
+.info-table td{
+    font-size:14px;
+    color:#333;
+}
+
+/* hilangkan hover */
+.info-table tr:hover{
+    background:transparent !important;
+}
+

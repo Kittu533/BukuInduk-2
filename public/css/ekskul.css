@@ -1,0 +1,70 @@
+/* background halaman */
+body{
+    background:#f4f6fb;
+}
+
+
+/* judul halaman */
+.page-title{
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    color:#2c3e50;
+    margin-bottom:20px;
+}
+
+
+/* card tabel & form */
+.table-card,
+.form-card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+
+/* body card */
+.card-body{
+    padding:20px 25px;
+}
+
+
+/* header tabel */
+.table thead{
+    background:linear-gradient(90deg,#4f5bd5,#6c7ae0);
+    color:white;
+}
+
+
+/* isi tabel */
+.table th,
+.table td{
+    padding:10px 14px;
+}
+
+
+/* hover tabel */
+.table tbody tr:hover{
+    background:#eef1ff;
+    transition:0.2s;
+}
+
+
+/* input */
+.form-control{
+    border-radius:8px;
+}
+
+
+/* tombol */
+.btn-primary{
+    background:#4f5bd5;
+    border:none;
+}
+
+.btn-warning{
+    border:none;
+}
+
+.btn-danger{
+    border:none;
+}

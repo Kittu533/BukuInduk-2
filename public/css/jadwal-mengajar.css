@@ -1,0 +1,181 @@
+/* background halaman */
+body{
+    background:#f4f6fb;
+}
+
+
+/* judul halaman */
+.page-title{
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    color:#2c3e50;
+    margin-bottom:20px;
+}
+
+
+/* card */
+.table-card,
+.form-card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    overflow:hidden;
+}
+
+
+/* body card */
+.card-body{
+    padding:20px 25px;
+}
+
+
+/* top action */
+.top-action{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+    gap:10px;
+}
+
+
+/* form search */
+.search-form{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0;
+}
+
+
+/* input search */
+.search-input{
+    width:180px !important;
+    height:32px !important;
+    min-height:32px !important;
+
+    padding:4px 10px !important;
+
+    font-size:13px;
+    line-height:1.2;
+
+    border-radius:6px;
+    border:1px solid #dcdfe6;
+
+    margin:0 !important;
+    box-shadow:none !important;
+}
+
+
+/* tombol cari */
+.search-form .btn{
+    height:32px;
+    padding:4px 12px;
+    font-size:13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+/* tombol tambah */
+.top-action .btn-success{
+    height:32px;
+    padding:4px 12px;
+    font-size:13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+/* tabel */
+.table{
+    margin-bottom:0;
+}
+
+
+/* header tabel */
+.table thead{
+    background:linear-gradient(90deg,#4f5bd5,#6c7ae0);
+    color:white;
+}
+
+
+.table thead th{
+    border:none;
+    font-size:14px;
+    font-weight:600;
+    text-align:center;
+}
+
+
+/* isi tabel */
+.table td{
+    padding:10px 14px;
+    vertical-align:middle;
+    font-size:14px;
+    color:#374151;
+}
+
+
+/* hover tabel */
+.table tbody tr:hover{
+    background:#eef1ff;
+    transition:0.2s;
+}
+
+
+/* tombol umum */
+.btn{
+    border-radius:6px;
+    border:none;
+    font-size:13px;
+    font-weight:500;
+}
+
+
+/* warna tombol */
+.btn-primary{
+    background:#4f5bd5;
+}
+
+
+.btn-success{
+    background:#198754;
+}
+
+
+.btn-success:hover{
+    background:#157347;
+}
+
+
+.btn-info{
+    color:white;
+}
+
+
+.btn-warning{
+    color:black;
+}
+
+
+.btn-danger{
+    color:white;
+}
+
+
+/* pagination */
+.pagination{
+    justify-content:center;
+    margin-top:20px;
+}
+
+
+/* responsive */
+.table-responsive{
+    overflow-x:auto;
+}

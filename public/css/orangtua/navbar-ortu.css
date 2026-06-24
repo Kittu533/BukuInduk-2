@@ -1,0 +1,41 @@
+/* ================= NAVBAR ================= */
+.navbar-custom{
+    position:fixed;
+    top:0;
+    left:210px; /* sesuai sidebar */
+    right:0;
+    height:65px;
+    background:linear-gradient(180deg, #f8f9ff, #eef2ff);
+
+    display:flex;
+    align-items:center;
+    justify-content:flex-end; /* 🔥 kanan */
+
+    padding:0 40px;
+    border-bottom:1px solid #e5e7eb;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+
+    z-index:1000;
+}
+
+/* isi kanan */
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* logo */
+.logo{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
+
+/* nama sekolah */
+.nama-sekolah{
+    font-weight:700;
+    color:#3949ab;
+    font-size:20px;
+     letter-spacing:0.5px;
+}

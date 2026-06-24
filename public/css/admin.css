@@ -1,0 +1,191 @@
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:#f4f6fb;
+    overflow-x: hidden;
+}
+
+.wrapper{
+    width:100%;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:320px;
+    height:100vh;
+    background:linear-gradient(180deg, #f8f9ff, #eef2ff);
+    border-right:1px solid #e5e7eb;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:30px;
+    overflow-y:auto;
+    box-shadow:0 4px 12px rgba(0,0,0,0.04);
+}
+
+/* PROFILE */
+.profile{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.profile img{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #eef2ff;
+}
+
+.profile h6{
+    margin-top:12px;
+    font-weight:700;
+    font-size:18px;
+    color:#111827;
+}
+
+/* JUDUL MENU */
+.menu-title{
+    font-size:13px;
+    font-weight:700;
+    color:#9ca3af;
+    margin-top:28px;
+    margin-bottom:12px;
+    letter-spacing:1px;
+}
+
+/* MENU */
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 15px;
+    font-size:20px;
+    font-weight:500;
+    color:#111827;
+    text-decoration:none;
+    border-radius:10px;
+    margin-bottom:6px;
+    transition:0.25s;
+}
+
+/* ICON */
+.sidebar a i{
+    font-size:20px;
+    min-width:22px;
+    color:#6b7280;
+    transition:0.25s;
+}
+
+/* HOVER */
+.sidebar a:hover{
+    background:#eef2ff;
+    color:#3949ab;
+    transform:translateX(3px);
+}
+
+.sidebar a:hover i{
+    color:#3949ab;
+}
+
+/* ACTIVE */
+.sidebar a.active{
+    background:#3949ab;
+    color:white;
+    font-weight:600;
+    box-shadow:0 6px 15px rgba(57,73,171,0.25);
+}
+
+.sidebar a.active i{
+    color:white;
+}
+
+/* LOGOUT */
+.logout{
+    margin-top:35px;
+}
+
+.logout a{
+    color:#dc2626 !important;
+    font-weight:600;
+}
+
+.logout a i{
+    color:#dc2626 !important;
+}
+
+.logout a:hover{
+    background:#fee2e2 !important;
+    color:#dc2626 !important;
+}
+
+.logout a:hover i{
+    color:#dc2626 !important;
+}
+
+
+
+.main-content {
+    margin-left: 320px;
+    margin-top: 70px;
+    padding: 30px;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+
+    /* --- JURUS PAMUNGKAS --- */
+    width: calc(100vw - 320px) !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+}
+
+
+/* CARD */
+.stat-card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    background:white;
+    padding:20px;
+}
+
+.stat-card h3,
+.stat-card h4{
+    font-weight:700;
+}
+
+/* SCROLLBAR */
+.sidebar::-webkit-scrollbar{
+    width:6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background:#d1d5db;
+    border-radius:10px;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+
+    .sidebar{
+        width:260px;
+    }
+
+    .main-content{
+        margin-left:260px;
+        width: calc(100% - 260px);
+    }
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+        left:-100%;
+    }
+
+    .main-content{
+        margin-left:0;
+        width: 100%;
+        padding:20px;
+    }
+}
