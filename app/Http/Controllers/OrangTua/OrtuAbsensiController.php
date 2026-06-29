@@ -11,12 +11,11 @@ use App\Models\Kehadiran;
  * OrtuAbsensiController — Lihat Kehadiran Anak (Orang Tua)
  *
  * Fitur:
- * - Menampilkan riwayat ketidakhadiran anak (Sakit/Izin/Alpa)
+ * - Menampilkan seluruh riwayat kehadiran anak
+ * - Status: Hadir, Sakit, Izin, Alpa
  * - Informasi kelas aktif & semester
  *
- * CATATAN: Orang tua hanya bisa READ, tidak bisa edit.
- *
- * @legacy Refactored dari DB::table() ke Eloquent (30 Mei 2026)
+ * Orang tua hanya memiliki hak akses READ.
  */
 class OrtuAbsensiController extends Controller
 {
@@ -34,7 +33,7 @@ class OrtuAbsensiController extends Controller
             'kelasAktif.semester'
         ])
         ->where('id_siswa', $id_siswa)
-        ->orderByDesc('id_siswa_kelas')
+        ->latest('id_siswa_kelas')
         ->first();
 
         $kelasAktif = $kelasData ? (object) [
@@ -44,7 +43,7 @@ class OrtuAbsensiController extends Controller
             'tahun' => $kelasData->kelasAktif?->tahunAjaran?->tahun,
         ] : null;
 
-        // Data absensi hanya untuk kelas aktif
+        // Ambil seluruh data kehadiran siswa pada kelas aktif
         $absensi = Kehadiran::with([
                 'jadwalMengajar.mapel',
                 'jadwalMengajar.guru'
@@ -58,20 +57,12 @@ class OrtuAbsensiController extends Controller
                     );
                 });
             })
-            ->whereIn('status', [
-                'Sakit',
-                'Izin',
-                'Alpa',
-                'sakit',
-                'izin',
-                'alpa'
-            ])
             ->orderBy('tanggal', 'desc')
             ->get()
             ->map(function ($k) {
                 return (object) [
                     'tanggal' => $k->tanggal,
-                    'status' => $k->status,
+                    'status' => ucfirst(strtolower($k->status)),
                     'nama_mapel' => $k->jadwalMengajar?->mapel?->nama_mapel ?? '-',
                     'nama_guru' => $k->jadwalMengajar?->guru?->nama_guru ?? '-',
                 ];

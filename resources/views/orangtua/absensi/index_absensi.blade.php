@@ -84,22 +84,34 @@
 
                 <td class="text-center">
 
-                    @if($a->status == 'Sakit')
+                    @if(strtolower($a->status) == 'hadir')
+
+                        <span class="badge bg-success">
+                            Hadir
+                        </span>
+
+                    @elseif(strtolower($a->status) == 'sakit')
 
                         <span class="badge bg-warning text-dark">
                             Sakit
                         </span>
 
-                    @elseif($a->status == 'Izin')
+                    @elseif(strtolower($a->status) == 'izin')
 
                         <span class="badge bg-info">
                             Izin
                         </span>
 
-                    @else
+                    @elseif(strtolower($a->status) == 'alpa')
 
                         <span class="badge bg-danger">
                             Alpa
+                        </span>
+
+                    @else
+
+                        <span class="badge bg-secondary">
+                            {{ ucfirst($a->status) }}
                         </span>
 
                     @endif
